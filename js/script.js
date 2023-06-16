@@ -38,7 +38,7 @@ let gridCords=[10,120,230,340],blockNumber=1,g,
 			  ,[[242, 214, 172],[234, 84, 85]],
 			   [[86, 204, 242],[20, 75, 204]],
 			   [[242, 214, 172],[247, 107, 28]],
-			   [[207, 235, 106],[242, 101, 58]]],
+			   [[235, 99, 192],[201, 34, 48]]],
 	settingsRestart=document.querySelector(`.restart`),
 	settingsQuit=document.querySelector(`.quit`),
 	settingsMore=document.querySelector(`.more`)
@@ -127,7 +127,7 @@ function change(x){
 	if(x==1){body.style.background=`linear-gradient(135deg, #f2d6ac 0%, #EA5455 100%)`}
 	if(x==2){body.style.background=`linear-gradient(135deg, #56CCF2 0%, #144bcc 100%)`}
 	if(x==3){body.style.background=`linear-gradient(135deg, #f2d6ac 0%, #F76B1C 100%)`}
-	if(x==4){body.style.background=`linear-gradient(135deg, #cfeb6a 0%, #f2653a 100%)`}}
+	if(x==4){body.style.background=`rgb(139,132,207)`}}
 
 function closeSettingsScreen(){
 	settingsScreen.style.transition=`0.3s`
