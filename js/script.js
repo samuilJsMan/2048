@@ -56,25 +56,28 @@ createNewBlock()
 
 document.querySelector(`.best_score`).innerHTML=localStorage.records
 document.addEventListener('DOMContentLoaded',function(){
-	if(isMobile||window.innerWith<768||mediaQueryList.matches){
+	if(isMobile||window.innerWidth<768||mediaQueryList.matches){
+		console.log(isMobile,window.innerWidth,mediaQueryList.matches)
 		document.querySelector(`.game`).style.cssText=`transform: translate(-50%,-60%) scale(2);`
 		document.querySelector(`.settings_button`).style.cssText=`width:100px; height:100px;`
 		document.querySelector(`.settings_screen_menue`).style.cssText=`transform: translate(-50%,-70%) scale(2);`
+		document.addEventListener('touchstart', handleTouchStart);
+		document.addEventListener('touchmove', handleTouchMove);
 	}else{
+		console.log(isMobile,window.innerWidth,mediaQueryList.matches)
 		document.querySelector(`.delete_score`).style.cssText=`transition: 0.3s;`
 		document.querySelector(`.settings_button`).style.cssText=`transition: 0.5s;`
 		document.querySelector(`.button`).style.cssText=`transition:0.3s;`}
-	document.querySelector(`.background1`).style.transition=`1s`
-	document.querySelector(`.background2`).style.transition=`1s`
-	document.querySelector(`.background3`).style.transition=`1s`
-	document.querySelector(`.background4`).style.transition=`1s`
-	document.querySelector(`.background5`).style.transition=`1s`
+		document.addEventListener(`keydown`,move)
+	for(let i of colorBG){i.style.transition=`1s`}
 	})
-document.addEventListener(`keydown`,function(){if(event.code==`KeyR`){location.reload()}})
+
+//
+document.querySelector(`.title`).innerHTML=`${isMobile} ${window.innerWidth<768} ${mediaQueryList.matches}`
+//
+
 document.querySelector(`.reset`).addEventListener(`click`, function(){location.reload()})
 document.addEventListener('contextmenu',function(event){event.preventDefault();});
-document.addEventListener('touchstart', handleTouchStart);
-document.addEventListener('touchmove', handleTouchMove);
 settingsButt.addEventListener(`click`, settingsFunc)
 
 function settingsFunc(){
@@ -156,10 +159,7 @@ function forDelete(){
 	document.querySelector(`.best_score`).innerHTML=`0`}	
 
 function createNewBlock(){
-	let FreeSpaces=0 
-	removeEventListener(`keydown`,move)
-	document.removeEventListener('touchstart', handleTouchStart)
-	document.removeEventListener('touchmove', handleTouchMove);
+	let FreeSpaces=0
 	for(let rows of gridMemory){for(let position of rows){if(position==0){FreeSpaces++}}}//перевірка на наявність вільних місць
 	if(FreeSpaces>0){ //якщо є вільні місця на полі
 		let randomCords=[Math.floor(Math.random()*4),Math.floor(Math.random()*4)]
@@ -178,12 +178,7 @@ function createNewBlock(){
 				gridMemory[randomCords[0]][randomCords[1]]=blockNumber//вносимо блок в память
 			}
 		}else{createNewBlock()}//якщо випадкове місце блоку зайняте то виконуємо функцію заново
-	}
-	setTimeout(function(){
-		addEventListener(`keydown`,move)
-		document.addEventListener('touchstart', handleTouchStart)
-		document.addEventListener('touchmove', handleTouchMove);
-	},310)}
+	}}
 
 function rgb(p){
 	return `rgb(${Math.round(g[0][0]+(g[1][0]-g[0][0])*p)},
@@ -191,6 +186,9 @@ function rgb(p){
 		${Math.round(g[0][2]+(g[1][2]-g[0][2])*p)})`}
 
 function move(swipe){
+	document.removeEventListener(`keydown`,move)
+	document.removeEventListener('touchstart', handleTouchStart)
+	document.removeEventListener('touchmove', handleTouchMove)
 	let create=0
 	if(event.code==`ArrowUp`||event.code==`KeyW`||swipe==`Up`){ //принажиманні стрілочки вверх
 		for(let repeat=0; repeat<5; repeat++){ //повторення тричі
@@ -383,7 +381,12 @@ function move(swipe){
 				}
 			}
 			if(FreeSpaces==0&&possibleMoves==0){endOfTheGame('L')}
-		}}}
+		}}
+	setTimeout(function(){
+		document.addEventListener(`keydown`,move)
+		document.addEventListener('touchstart', handleTouchStart)
+		document.addEventListener('touchmove', handleTouchMove);
+	},310)}
 
 function endOfTheGame(result){
 	if(result==`L`){ 
@@ -412,15 +415,18 @@ function handleTouchMove(event){
 	currentX=event.touches[0].clientX
 	currentY=event.touches[0].clientY
 
-	var deltaX=currentX-startX
-	var deltaY=currentY-startY
+	let deltaX=currentX-startX, deltaY=currentY-startY
 
-	if(Math.abs(deltaX)>Math.abs(deltaY)) {
-		if(deltaX>0){move(`Right`)
-		}else{move(`Left`)}
+	if(Math.abs(deltaX)>Math.abs(deltaY)){
+		if(deltaX>0){
+			move(`Right`)
+		}else{
+			move(`Left`)}
 	}else{
-		if(deltaY>0){move(`Down`)
-		}else{move(`Up`)} 
+		if(deltaY>0){
+			move(`Down`)
+		}else{
+			move(`Up`)} 
 		if (deltaY > 20) {
     		event.preventDefault()
   		}
