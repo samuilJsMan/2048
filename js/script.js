@@ -57,14 +57,12 @@ createNewBlock()
 document.querySelector(`.best_score`).innerHTML=localStorage.records
 document.addEventListener('DOMContentLoaded',function(){
 	if(isMobile||window.innerWidth<768||mediaQueryList.matches){
-		console.log(isMobile,window.innerWidth,mediaQueryList.matches)
 		document.querySelector(`.game`).style.cssText=`transform: translate(-50%,-60%) scale(2);`
 		document.querySelector(`.settings_button`).style.cssText=`width:100px; height:100px;`
 		document.querySelector(`.settings_screen_menue`).style.cssText=`transform: translate(-50%,-70%) scale(2);`
 		document.addEventListener('touchstart', handleTouchStart);
 		document.addEventListener('touchmove', handleTouchMove);
 	}else{
-		console.log(isMobile,window.innerWidth,mediaQueryList.matches)
 		document.querySelector(`.delete_score`).style.cssText=`transition: 0.3s;`
 		document.querySelector(`.settings_button`).style.cssText=`transition: 0.5s;`
 		document.querySelector(`.button`).style.cssText=`transition:0.3s;`}
@@ -73,7 +71,7 @@ document.addEventListener('DOMContentLoaded',function(){
 	})
 
 //
-document.querySelector(`.title`).innerHTML=`${isMobile} ${window.innerWidth<768} ${mediaQueryList.matches}`
+document.querySelector(`.title`).innerHTML=`${isMobile} ${window.innerWidth} ${mediaQueryList.matches}`
 //
 
 document.querySelector(`.reset`).addEventListener(`click`, function(){location.reload()})
