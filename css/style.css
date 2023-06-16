@@ -99,9 +99,7 @@ body {
     background: linear-gradient(135deg, #f2d6ac 0%, #F76B1C 100%);
     opacity: 0; }
   body .background5 {
-    background: -webkit-linear-gradient(315deg, #cfeb6a 0%, #f2653a 100%);
-    background: -o-linear-gradient(315deg, #cfeb6a 0%, #f2653a 100%);
-    background: linear-gradient(135deg, #cfeb6a 0%, #f2653a 100%);
+    background: #b384cf;
     opacity: 0; }
   body .wrapper {
     width: 100%;
@@ -319,9 +317,7 @@ body {
           background: linear-gradient(135deg, #f2d6ac 0%, #F76B1C 100%);
           opacity: 0.8; }
         body .settings_screen .settings_screen_menue .colorBG .colorBG5 {
-          background: -webkit-linear-gradient(315deg, #cfeb6a 0%, #f2653a 100%);
-          background: -o-linear-gradient(315deg, #cfeb6a 0%, #f2653a 100%);
-          background: linear-gradient(135deg, #cfeb6a 0%, #f2653a 100%);
+          background: #b384cf;
           opacity: 0.8; }
         body .settings_screen .settings_screen_menue .colorBG .chosen {
           border: 3px solid #91e64c;
@@ -375,10 +371,10 @@ body {
             background: #f76b1c;
             left: 205px; }
         body .settings_screen .settings_screen_menue .colorBlock .colorBlock5 {
-          background: #cfeb6a;
+          background: #eb63c0;
           opacity: 0.8; }
           body .settings_screen .settings_screen_menue .colorBlock .colorBlock5 .inside {
-            background: #f2653a;
+            background: #c92230;
             left: 265px; }
         body .settings_screen .settings_screen_menue .colorBlock .CB {
           height: 50px;
