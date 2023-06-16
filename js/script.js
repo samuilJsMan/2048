@@ -57,7 +57,7 @@ createNewBlock()
 document.querySelector(`.best_score`).innerHTML=localStorage.records
 document.addEventListener('DOMContentLoaded',function(){
 	if(isMobile||window.innerWith<768||mediaQueryList.matches){
-		document.querySelector(`.game`).style.cssText=`transform: translate(-50%,-70%) scale(2);`
+		document.querySelector(`.game`).style.cssText=`transform: translate(-50%,-60%) scale(2);`
 		document.querySelector(`.settings_button`).style.cssText=`width:100px; height:100px;`
 		document.querySelector(`.settings_screen_menue`).style.cssText=`transform: translate(-50%,-70%) scale(2);`
 	}else{
